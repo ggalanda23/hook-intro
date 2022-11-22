@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import Counter from './component/Counter';
+import Cat from './component/Cat';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+const [ toggle , setToggle] = useState(true);
+
+const handleToggle = () => {
+  setToggle((prevToggle) => !prevToggle );
+}
+return (
+<div className="App">
+  <button onClick={handleToggle}>{toggle ? "Hide" : "Show"} Counter</button>
+  <p>{toggle ? "show me" : "hide me"}</p>
+  {toggle && <Cat/>}
+</div>
+)
+}
 export default App;
